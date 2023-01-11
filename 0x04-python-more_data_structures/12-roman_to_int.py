@@ -1,21 +1,33 @@
 #!/usr/bin/python3
+# 12-roman_to_int.py
+# Brennan D Baraban <375@holbertonschool.com>
+
 
 def roman_to_int(roman_string):
-    """ converts a Roman numeral to an integer."""
+    """Converts a roman numeral to an integer."""
+    if (not isinstance(roman_string, str) or
+            roman_string is None):
+        return (0)
 
-    roman_num = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-    if (roman_string is None) or (type(roman_string) is not str):
-        return 0
+    roman_dict = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+    }
+    num = 0
 
-    number = len(roman_string)
-    value_int = roman_num[roman_string[number-1]]
-    for i in range(number - 1, 0, -1):
-        current_value = roman_num[roman_string[i]]
-        previous_value = roman_num[roman_string[i-1]]
+    for i in range(len(roman_string)):
+        if roman_dict.get(roman_string[i], 0) == 0:
+            return (0)
 
-        if previous_value >= current_value:
-            value_int += previous_value
+        if (i != (len(roman_string) - 1) and
+                roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]):
+                num += roman_dict[roman_string[i]] * -1
+
         else:
-            value_int -= previous_value
-
-    return value_int
+            num += roman_dict[roman_string[i]]
+    return (num)
