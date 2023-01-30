@@ -51,7 +51,12 @@ def nqueens_solutions(n):
                 tmp_board = [row[:] for row in board]
                 tmp_board[row][col] = 'Q'
                 xout(tmp_board, row, col)
-                solutions = recursive_solve(tmp_board, row+1, queens+1, solutions)
+                solutions = recursive_solve(
+                    tmp_board,
+                    row + 1,
+                    queens + 1,
+                    solutions
+                )
         return solutions
 
     board = init_board()
