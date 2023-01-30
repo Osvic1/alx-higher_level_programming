@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import sys
 
 
@@ -40,7 +39,11 @@ def nqueens_solutions(n):
 
     def recursive_solve(board, row, queens, solutions):
         if queens == n:
-            solution = [[i, j] for i in range(n) for j in range(n) if board[i][j] == 'Q']
+            solution = []
+            for i in range(n):
+                for j in range(n):
+                    if board[i][j] == 'Q':
+                        solution.append([i, j])
             solutions.append(solution)
             return solutions
         for col in range(n):
