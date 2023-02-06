@@ -25,7 +25,7 @@ class BaseGeometry:
         1. TypeError: If the value passed is not an integer
         2. ValueError: If the value passed is less than or equal to 0
         """
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("{} must be an integer".format(name))
 
         if value <= 0:
