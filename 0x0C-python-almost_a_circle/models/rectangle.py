@@ -72,3 +72,29 @@ class Rectangle(Base):
             s = '\n' * self.y + \
                 (' ' * self.x + '#' * self.width + '\n') * self.height
             print(s, end='')
+
+        def __update(self, id=None, width=None, height=None, x=None, y=None):
+            '''Internal method that update instance attributes via */**args.'''
+            if id is not None:
+                self.id = id
+            if width is not None:
+                self.width = width
+            if height is not None:
+                self.height = height
+            if x is not None:
+                self.x = x
+            if y is not None:
+                self.y = y
+
+        def update(self, *args, **kwargs):
+            '''Updates instance attributes via no-keyword & keyword args.'''
+            # print(args, kwargs)
+            if args:
+                self.__update(*args)
+            elif kwargs:
+                self.__update(**kwargs)
+
+        def to_dictionary(self):
+            '''Returns dictionary representation of this class.'''
+        return {"id": self.id, "width": self.__width, "height": self.__height,
+                "x": self.__x, "y": self.__y}
