@@ -545,5 +545,6 @@ class TestBase_load_from_file_csv(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.load_from_file_csv([], 1)
 
+
 if __name__ == "__main__":
     unittest.main()
